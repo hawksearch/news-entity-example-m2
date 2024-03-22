@@ -1,0 +1,21 @@
+{
+  "name": "hawksearch/news-entity-example-m2",
+  "version": "1.0.0",
+  "description": "Example of creating a simple News entity available for HawkSearch indexing and search",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*",
+    "hawksearch/esindexing-magento-2": "~0.6"
+  },
+  "license": [
+    "Open Software License (OSL)"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "HawkSearch\\NewsEntityExample\\": ""
+    }
+  }
+}
