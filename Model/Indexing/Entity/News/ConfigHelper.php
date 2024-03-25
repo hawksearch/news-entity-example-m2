@@ -12,11 +12,10 @@
  */
 declare(strict_types=1);
 
-namespace HawkSearch\NewsEntityExample\Model\Indexing\EntityType;
+namespace HawkSearch\NewsEntityExample\Model\Indexing\Entity\News;
 
-use HawkSearch\EsIndexing\Model\Indexing\EntityType\EntityTypeAbstract;
+use HawkSearch\EsIndexing\Model\Indexing\AbstractConfigHelper;
 
-class NewsEntityType extends EntityTypeAbstract
+class ConfigHelper extends AbstractConfigHelper
 {
-    public const ENTITY_TYPE_NAME = 'news';
 }

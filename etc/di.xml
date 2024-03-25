@@ -22,16 +22,49 @@
     <virtualType name="HawkSearch\NewsEntityExample\Model\Indexer\Entities\ActionEntityNews"
                  type="HawkSearch\EsIndexing\Model\Indexer\Entities\ActionEntityDefault">
         <arguments>
-            <!--<argument name="entityScheduler" xsi:type="object">HawkSearch\NewsEntityExample\Model\Indexer\Entities\Scheduler\News</argument>-->
-            <!-- Remove physical class stub after implementing NewsEntityType -->
             <argument name="entityScheduler" xsi:type="object">HawkSearch\NewsEntityExample\Model\Indexer\Entities\Scheduler\News</argument>
         </arguments>
     </virtualType>
-    <!-- Enable this virtual type after implementing NewsEntityType -->
-    <!--<virtualType name="HawkSearch\NewsEntityExample\Model\Indexer\Entities\Scheduler\News"
+    <virtualType name="HawkSearch\NewsEntityExample\Model\Indexer\Entities\Scheduler\News"
                  type="HawkSearch\EsIndexing\Model\Indexer\Entities\SchedulerAbstract">
         <arguments>
             <argument name="entityType" xsi:type="object">HawkSearch\NewsEntityExample\Model\Indexing\EntityType\NewsEntityType</argument>
         </arguments>
-    </virtualType>-->
+    </virtualType>
+
+    <type name="HawkSearch\NewsEntityExample\Model\Indexing\EntityType\NewsEntityType">
+        <arguments>
+            <argument name="rebuilder" xsi:type="object">HawkSearch\NewsEntityExample\Model\Indexing\Entity\News\EntityRebuild\Proxy</argument>
+            <argument name="itemsDataProvider" xsi:type="object">HawkSearch\NewsEntityExample\Model\Indexing\Entity\News\ItemsDataProvider</argument>
+            <argument name="attributeHandler" xsi:type="object">HawkSearch\NewsEntityExample\Model\News\Attribute\Handler\Composite</argument>
+            <argument name="configHelper" xsi:type="object">HawkSearch\NewsEntityExample\Model\Indexing\Entity\News\ConfigHelper</argument>
+            <argument name="itemsIndexer" xsi:type="object">HawkSearch\EsIndexing\Model\Indexing\ItemsIndexer\SearchedItemsIndexer</argument>
+            <argument name="typeName" xsi:type="const">HawkSearch\NewsEntityExample\Model\Indexing\EntityType\NewsEntityType::ENTITY_TYPE_NAME</argument>
+        </arguments>
+    </type>
+
+    <type name="HawkSearch\NewsEntityExample\Model\Indexing\Entity\News\EntityRebuild\Proxy">
+        <arguments>
+            <argument name="shared" xsi:type="boolean">false</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="HawkSearch\NewsEntityExample\Model\News\Attribute\Handler\Composite"
+                 type="HawkSearch\EsIndexing\Model\Indexing\AttributeHandler\Composite">
+        <!--
+        Define News entity custom attribute handlers.
+        If handler is not defined then attribute raw data will be used for getting values from entity table.
+        Attribute handler should implement \HawkSearch\EsIndexing\Model\Indexing\AttributeHandlerInterface
+        -->
+        <!--
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="url" xsi:type="array">
+                    <item name="attribute" xsi:type="string">url</item>
+                    <item name="class" xsi:type="string">HawkSearch\NewsEntityExample\Model\News\Attribute\Handler\Url</item>
+                </item>
+            </argument>
+        </arguments>
+        -->
+    </virtualType>
 </config>

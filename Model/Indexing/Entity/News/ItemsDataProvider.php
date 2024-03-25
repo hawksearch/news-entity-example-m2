@@ -12,11 +12,14 @@
  */
 declare(strict_types=1);
 
-namespace HawkSearch\NewsEntityExample\Model\Indexing\EntityType;
+namespace HawkSearch\NewsEntityExample\Model\Indexing\Entity\News;
 
-use HawkSearch\EsIndexing\Model\Indexing\EntityType\EntityTypeAbstract;
+use HawkSearch\EsIndexing\Model\Indexing\ItemsDataProviderInterface;
 
-class NewsEntityType extends EntityTypeAbstract
+class ItemsDataProvider implements ItemsDataProviderInterface
 {
-    public const ENTITY_TYPE_NAME = 'news';
+    public function getItems(int $storeId, $entityIds = null, $currentPage = 1, $pageSize = 0)
+    {
+        return [];
+    }
 }
