@@ -67,4 +67,36 @@
         </arguments>
         -->
     </virtualType>
+
+    <virtualType name="HawkSearch\EsIndexing\Model\Indexer\Entities\Scheduler\All">
+        <arguments>
+            <argument name="schedulers" xsi:type="array">
+                <item name="news" xsi:type="string">HawkSearch\NewsEntityExample\Model\Indexer\Entities\Scheduler\News</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="HawkSearch\EsIndexing\Model\Indexing\EntityTypePool">
+        <arguments>
+            <argument name="types" xsi:type="array">
+                <item name="news" xsi:type="string">HawkSearch\NewsEntityExample\Model\Indexing\EntityType\NewsEntityType</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="HawkSearch\EsIndexing\Model\MessageQueue\MessageTopicByEntityTypeResolver">
+        <arguments>
+            <argument name="resolvers" xsi:type="array">
+                <item name="news" xsi:type="object">HawkSearch\NewsEntityExample\Model\Indexing\EntityType\NewsMessageTopicResolver</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="HawkSearch\NewsEntityExample\Model\Indexing\EntityType\NewsMessageTopicResolver"
+                 type="HawkSearch\EsIndexing\Model\MessageQueue\MessageTopicByObjectResolver">
+        <arguments>
+            <argument name="topic" xsi:type="string">hawksearch.indexing.news.reindex</argument>
+            <argument name="resolverClass" xsi:type="string">HawkSearch\NewsEntityExample\Model\Indexing\EntityType\NewsEntityType</argument>
+        </arguments>
+    </virtualType>
 </config>
