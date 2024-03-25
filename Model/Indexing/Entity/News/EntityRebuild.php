@@ -40,6 +40,16 @@ class EntityRebuild extends AbstractEntityRebuild
      */
     protected function getIndexedAttributes(DataObject $item = null): array
     {
-        return [];
+        /**
+         * Make sure to create corresponding fields in Hawksearch Workbench
+         */
+        return [
+            'title',
+            'excerpt',
+            'content',
+            'url',
+            'created_at',
+            'published_at',
+        ];
     }
 }
